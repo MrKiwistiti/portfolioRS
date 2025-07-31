@@ -36,8 +36,8 @@
     <section id="fortress" class="fortress-section">
         <div class="castle-gate" onclick="openGate()">
             <div class="gate-doors">
-                <div class="gate-left">🚪</div>
-                <div class="gate-right">🚪</div>
+                <div class="gate-left"></div>
+                <div class="gate-right"></div>
             </div>
         </div>
         
@@ -64,10 +64,10 @@
             <div class="royal-motto">« Par le Code et l'Innovation, je règne »</div>
             <div class="medieval-buttons">
                 <button class="medieval-btn btn-primary" onclick="showMagicPortal(() => document.getElementById('quests').scrollIntoView())">
-                    ⚔️ Voir mes Quêtes
+                    Voir mes Quêtes
                 </button>
                 <button class="medieval-btn btn-secondary" onclick="summonRaven()">
-                    🐦‍⬛ Envoyer un Corbeau
+                    Me Contacter
                 </button>
             </div>
         </div>
@@ -75,7 +75,7 @@
 
     <!-- Section Chroniques (À propos) -->
     <section id="chronicles" class="chronicles-section">
-        <h2 class="section-title medieval-title">📜 Les Chroniques du Royaume</h2>
+        <h2 class="section-title medieval-title">Les Chroniques du Royaume</h2>
         <div class="parchment">
             <div class="parchment-content">
                 <div class="illuminated-letter">S</div>
@@ -109,10 +109,10 @@
 
     <!-- Section Arsenal (Compétences) -->
     <section id="arsenal" class="arsenal-section">
-        <h2 class="section-title medieval-title">⚔️ L'Arsenal Mystique</h2>
+        <h2 class="section-title medieval-title">L'Arsenal Mystique</h2>
         <div class="weapons-display">
             <div class="weapon-card fire-weapon" data-element="fire">
-                <div class="weapon-icon">🔥</div>
+                <div class="weapon-icon"></div>
                 <h3 class="weapon-name">Épée de Feu</h3>
                 <p class="weapon-description">Développement</p>
                 <div class="weapon-stats">C • C++ • Python • JavaScript • React</div>
@@ -120,7 +120,7 @@
             </div>
             
             <div class="weapon-card ice-weapon" data-element="ice">
-                <div class="weapon-icon">❄️</div>
+                <div class="weapon-icon"></div>
                 <h3 class="weapon-name">Lame de Glace</h3>
                 <p class="weapon-description">DevOps & Systèmes</p>
                 <div class="weapon-stats">Linux • Git • Docker • AWS</div>
@@ -128,7 +128,7 @@
             </div>
             
             <div class="weapon-card lightning-weapon" data-element="lightning">
-                <div class="weapon-icon">⚡</div>
+                <div class="weapon-icon"></div>
                 <h3 class="weapon-name">Sceptre de Foudre</h3>
                 <p class="weapon-description">Intelligence Artificielle</p>
                 <div class="weapon-stats">Machine Learning • Deep Learning • NLP</div>
@@ -136,7 +136,7 @@
             </div>
             
             <div class="weapon-card earth-weapon" data-element="earth">
-                <div class="weapon-icon">🌍</div>
+                <div class="weapon-icon"></div>
                 <h3 class="weapon-name">Bouclier de Terre</h3>
                 <p class="weapon-description">Entrepreneuriat</p>
                 <div class="weapon-stats">Business Strategy • Leadership • Innovation</div>
@@ -147,10 +147,10 @@
 
     <!-- Section Quêtes (Projets) -->
     <section id="quests" class="quests-section">
-        <h2 class="section-title medieval-title">🗡️ Registre des Quêtes</h2>
+        <h2 class="section-title medieval-title">Registre des Quêtes</h2>
         <div class="quest-scrolls">
             <div class="quest-scroll legendary-quest">
-                <div class="quest-seal">🏆</div>
+                <div class="quest-seal"></div>
                 <div class="quest-content">
                     <h3 class="quest-title">La Quête d'AmaCompare</h3>
                     <p class="quest-rank">Quête Légendaire</p>
@@ -168,7 +168,7 @@
             </div>
             
             <div class="quest-scroll epic-quest">
-                <div class="quest-seal">🔮</div>
+                <div class="quest-seal"></div>
                 <div class="quest-content">
                     <h3 class="quest-title">Les Mystères d'Epitech</h3>
                     <p class="quest-rank">Quête Épique</p>
@@ -185,7 +185,7 @@
             </div>
             
             <div class="quest-scroll rare-quest">
-                <div class="quest-seal">🌟</div>
+                <div class="quest-seal"></div>
                 <div class="quest-content">
                     <h3 class="quest-title">L'Empire Freelance</h3>
                     <p class="quest-rank">Quête Rare</p>
@@ -205,7 +205,7 @@
 
     <!-- Section Grimoire (Présentation) -->
     <section id="grimoire" class="grimoire-section">
-        <h2 class="section-title medieval-title">📖 Le Grimoire des Sorts</h2>
+        <h2 class="section-title medieval-title">Le Grimoire des Sorts</h2>
         <div class="spellbook">
             <div class="book-cover" onclick="createMagicBurst()">
                 <div class="book-title">Codex Magicus</div>
@@ -214,61 +214,61 @@
             
             <div class="spell-pages">
                 <div class="spell-page active" id="spell-1">
-                    <h3 class="spell-name">🔥 Invocation du Code</h3>
+                    <h3 class="spell-name">Invocation du Code</h3>
                     <div class="spell-content">
                         <p class="spell-description">
                             "Par les anciens mystères du silicium et les runes du binaire, 
                             je transforme les idées en réalité numérique."
                         </p>
                         <div class="spell-components">
-                            <div class="component">💎 Créativité</div>
-                            <div class="component">⚡ Innovation</div>
-                            <div class="component">🧪 Expérimentation</div>
+                            <div class="component">Créativité</div>
+                            <div class="component">Innovation</div>
+                            <div class="component">Expérimentation</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="spell-page" id="spell-2">
-                    <h3 class="spell-name">❄️ Gel des Bugs</h3>
+                    <h3 class="spell-name">Gel des Bugs</h3>
                     <div class="spell-content">
                         <p class="spell-description">
                             "Par la patience du debugging et la sagesse de l'expérience, 
                             je purifie le code de toute corruption."
                         </p>
                         <div class="spell-components">
-                            <div class="component">🔍 Analyse</div>
-                            <div class="component">🛠️ Debug</div>
-                            <div class="component">✨ Optimisation</div>
+                            <div class="component">Analyse</div>
+                            <div class="component">Debug</div>
+                            <div class="component">Optimisation</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="spell-page" id="spell-3">
-                    <h3 class="spell-name">⚡ Éclair d'Inspiration</h3>
+                    <h3 class="spell-name">Éclair d'Inspiration</h3>
                     <div class="spell-content">
                         <p class="spell-description">
                             "Quand l'innovation frappe, les solutions émergent comme 
                             des éclairs dans la nuit de la complexité."
                         </p>
                         <div class="spell-components">
-                            <div class="component">💡 Vision</div>
-                            <div class="component">🚀 Exécution</div>
-                            <div class="component">🎯 Précision</div>
+                            <div class="component">Vision</div>
+                            <div class="component">Exécution</div>
+                            <div class="component">Précision</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="spell-page" id="spell-4">
-                    <h3 class="spell-name">🌍 Connexion Universelle</h3>
+                    <h3 class="spell-name">Connexion Universelle</h3>
                     <div class="spell-content">
                         <p class="spell-description">
                             "Par les liens invisibles du réseau mondial, 
                             je connecte les âmes numériques aux solutions parfaites."
                         </p>
                         <div class="spell-components">
-                            <div class="component">🌐 Réseau</div>
-                            <div class="component">🤝 Collaboration</div>
-                            <div class="component">🌟 Impact</div>
+                            <div class="component">Réseau</div>
+                            <div class="component">Collaboration</div>
+                            <div class="component">Impact</div>
                         </div>
                     </div>
                 </div>
@@ -289,61 +289,61 @@
 
     <!-- Section Tour des Corbeaux (Contact) -->
     <section id="ravens" class="ravens-section">
-        <h2 class="section-title medieval-title">🐦‍⬛ La Tour des Corbeaux</h2>
+        <h2 class="section-title medieval-title">La Tour des Corbeaux</h2>
         <div class="raven-tower">
             <div class="tower-top">
-                <div class="raven-messenger" onclick="summonRaven()">🐦‍⬛</div>
+                <div class="raven-messenger" onclick="summonRaven()"></div>
             </div>
             <div class="message-scrolls">
                 <div class="contact-scroll">
-                    <h3 class="scroll-title">📧 Messages Royaux</h3>
+                    <h3 class="scroll-title">Messages Royaux</h3>
                     <div class="contact-methods">
                         <a href="mailto:sven.reichert@epitech.eu" class="contact-method">
-                            <span class="contact-icon">✉️</span>
+                            <span class="contact-icon"></span>
                             <span class="contact-text">sven.reichert@epitech.eu</span>
                         </a>
                         <a href="https://www.linkedin.com/in/sven-reichert-rs" class="contact-method" target="_blank">
-                            <span class="contact-icon">💼</span>
+                            <span class="contact-icon"></span>
                             <span class="contact-text">LinkedIn Royal</span>
                         </a>
                         <a href="https://github.com/MrKiwistiti" class="contact-method" target="_blank">
-                            <span class="contact-icon">⚔️</span>
+                            <span class="contact-icon"></span>
                             <span class="contact-text">Arsenal GitHub</span>
                         </a>
                     </div>
                 </div>
                 
                 <div class="business-scroll">
-                    <h3 class="scroll-title">💰 Affaires du Royaume</h3>
+                    <h3 class="scroll-title">Affaires du Royaume</h3>
                     <div class="business-services">
                         <div class="service-item">
-                            <span class="service-icon">🏗️</span>
+                            <span class="service-icon"></span>
                             <span class="service-name">Développement Web</span>
                         </div>
                         <div class="service-item">
-                            <span class="service-icon">🤖</span>
+                            <span class="service-icon"></span>
                             <span class="service-name">Solutions IA</span>
                         </div>
                         <div class="service-item">
-                            <span class="service-icon">📱</span>
+                            <span class="service-icon"></span>
                             <span class="service-name">Applications Mobiles</span>
                         </div>
                         <div class="service-item">
-                            <span class="service-icon">💡</span>
+                            <span class="service-icon"></span>
                             <span class="service-name">Conseil Tech</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="projects-scroll">
-                    <h3 class="scroll-title">🎯 Quêtes Spécialisées</h3>
+                    <h3 class="scroll-title">Quêtes Spécialisées</h3>
                     <div class="project-links">
                         <a href="https://github.com/MrKiwistiti/AmacompareV2" class="project-link" target="_blank">
-                            <span class="project-icon">🏆</span>
+                            <span class="project-icon"></span>
                             <span class="project-name">AmaCompare</span>
                         </a>
                         <a href="https://guns.lol/mrkiwi" class="project-link" target="_blank">
-                            <span class="project-icon">💼</span>
+                            <span class="project-icon"></span>
                             <span class="project-name">Cash Trader CS2</span>
                         </a>
                     </div>
@@ -355,7 +355,7 @@
     <!-- Dialogue Box pour les interactions -->
     <div id="dialogueBox" class="dialogue-box hidden">
         <div class="dialogue-content">
-            <div class="dialogue-character">🧙‍♂️</div>
+            <div class="dialogue-character"></div>
             <div class="dialogue-text"></div>
         </div>
         <div class="dialogue-options"></div>
@@ -364,11 +364,11 @@
     <!-- Status Bars -->
     <div class="status-bars">
         <div class="status-bar">
-            <div class="status-label">⚡ Mana</div>
+            <div class="status-label">Mana</div>
             <div class="status-fill mana-bar"></div>
         </div>
         <div class="status-bar">
-            <div class="status-label">❤️ Vie</div>
+            <div class="status-label">Vie</div>
             <div class="status-fill health-bar"></div>
         </div>
     </div>
@@ -376,7 +376,7 @@
     <!-- Boss Battle Arena (Hidden) -->
     <div id="bossArena" class="boss-arena hidden">
         <div class="boss-container">
-            <div class="boss-dragon">🐲</div>
+            <div class="boss-dragon"></div>
             <div class="boss-health-bar">
                 <div class="boss-health-fill"></div>
             </div>
