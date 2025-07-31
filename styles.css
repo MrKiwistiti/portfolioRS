@@ -13,21 +13,28 @@
 }
 
 :root {
-    /* Palette Médiévale Dark Fantasy */
-    --gold-royal: #d4af37;
-    --gold-light: #f4d03f;
-    --gold-dark: #b7950b;
-    --orange-fire: #ff6b35;
-    --red-blood: #8b0000;
-    --parchment: #e8d5b7;
-    --parchment-dark: #c7aa7d;
-    --brown-dark: #1a0f0a;
-    --brown-medium: #2c1810;
-    --brown-light: #3d2418;
-    --black-charcoal: #0a0a0a;
-    --purple-mystic: #4a148c;
-    --blue-ice: #1e3a8a;
-    --green-earth: #1b5e20;
+    /* Palette Dark Fantasy Réaliste */
+    --blood-dark: #1a0909;
+    --blood-red: #4a0e0e;
+    --blood-crimson: #660000;
+    --stone-black: #0d0d0d;
+    --stone-dark: #1a1a1a;
+    --stone-grey: #2d2d2d;
+    --bone-white: #f4f1e8;
+    --bone-aged: #e8e0d1;
+    --bone-yellow: #d4c7a8;
+    --iron-black: #0f0f0f;
+    --iron-grey: #3c3c3c;
+    --copper-dark: #8b4513;
+    --copper-rust: #a0522d;
+    --shadow-deep: #000000;
+    --mist-grey: #4a4a4a;
+    --ember-orange: #cc4400;
+    --ember-red: #990000;
+    --poison-green: #2d4a2d;
+    --ice-blue: #1e2a4a;
+    --decay-brown: #2a1f1a;
+    --ash-grey: #595959;
     
     /* Fonts */
     --font-medieval: 'Cinzel', serif;
@@ -36,14 +43,15 @@
 
 body.medieval-realm {
     background: 
-        radial-gradient(circle at 20% 80%, rgba(139, 0, 0, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(74, 20, 140, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, var(--black-charcoal) 0%, var(--brown-dark) 50%, var(--brown-medium) 100%);
+        radial-gradient(ellipse at 30% 20%, rgba(26, 9, 9, 0.9) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(15, 15, 15, 0.8) 0%, transparent 50%),
+        linear-gradient(180deg, var(--shadow-deep) 0%, var(--stone-black) 30%, var(--blood-dark) 70%, var(--stone-black) 100%);
     min-height: 100vh;
     font-family: var(--font-text);
-    color: var(--parchment);
+    color: var(--bone-aged);
     overflow-x: hidden;
     position: relative;
+    cursor: crosshair;
 }
 
 body.medieval-realm::before {
@@ -54,13 +62,24 @@ body.medieval-realm::before {
     width: 100%;
     height: 100%;
     background: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="%23d4af37" opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%23d4af37" opacity="0.02"/><circle cx="50" cy="10" r="0.5" fill="%23d4af37" opacity="0.01"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'),
-        radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+        /* Texture de pierre ancienne */
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><filter id="roughness"><feTurbulence baseFrequency="0.9" numOctaves="4" result="turbulence"/><feColorMatrix in="turbulence" type="saturate" values="0"/></filter></defs><rect width="200" height="200" fill="%23000000" opacity="0.1"/><circle cx="50" cy="50" r="2" fill="%23660000" opacity="0.3"/><circle cx="150" cy="150" r="1" fill="%23660000" opacity="0.2"/><circle cx="100" cy="175" r="1.5" fill="%23330000" opacity="0.4"/><rect x="0" y="0" width="200" height="200" filter="url(%23roughness)" opacity="0.05"/></svg>'),
+        /* Texture de sang séché */
+        radial-gradient(ellipse at 15% 85%, rgba(102, 0, 0, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 15%, rgba(51, 0, 0, 0.15) 0%, transparent 30%),
+        /* Vignette sombre */
+        radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
     pointer-events: none;
     z-index: -1;
+    animation: subtleFlicker 8s infinite ease-in-out;
 }
 
-/* ===== EFFETS ATMOSPHÉRIQUES ===== */
+@keyframes subtleFlicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; }
+}
+
+/* ===== EFFETS ATMOSPHÉRIQUES DARK ===== */
 .fire-particles {
     position: fixed;
     top: 0;
@@ -76,37 +95,38 @@ body.medieval-realm::before {
 .fire-particles::after {
     content: '';
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle, var(--orange-fire) 0%, transparent 70%);
+    width: 2px;
+    height: 2px;
+    background: radial-gradient(circle, var(--ember-orange) 0%, var(--ember-red) 50%, transparent 100%);
     border-radius: 50%;
-    animation: fireFloat 8s infinite linear;
+    animation: embersRise 15s infinite linear;
     opacity: 0;
+    box-shadow: 0 0 3px var(--ember-red);
 }
 
 .fire-particles::before {
-    left: 20%;
-    animation-delay: -2s;
+    left: 10%;
+    animation-delay: -3s;
 }
 
 .fire-particles::after {
-    left: 80%;
-    animation-delay: -6s;
+    left: 90%;
+    animation-delay: -8s;
 }
 
-@keyframes fireFloat {
+@keyframes embersRise {
     0% {
-        transform: translateY(100vh) scale(0);
+        transform: translateY(100vh) scale(0) rotate(0deg);
         opacity: 0;
     }
-    10% {
-        opacity: 1;
+    5% {
+        opacity: 0.8;
     }
-    90% {
-        opacity: 1;
+    95% {
+        opacity: 0.3;
     }
     100% {
-        transform: translateY(-100px) scale(1);
+        transform: translateY(-50px) scale(1.5) rotate(360deg);
         opacity: 0;
     }
 }
@@ -114,20 +134,22 @@ body.medieval-realm::before {
 .fog {
     position: fixed;
     top: 0;
-    left: -50%;
-    width: 200%;
+    left: -100%;
+    width: 300%;
     height: 100%;
     background: 
-        radial-gradient(ellipse at 30% 60%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
-        radial-gradient(ellipse at 70% 40%, rgba(139, 0, 0, 0.1) 0%, transparent 40%);
-    animation: fogMove 20s infinite linear;
+        radial-gradient(ellipse at 20% 70%, rgba(77, 77, 77, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 30%, rgba(45, 45, 45, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 90%, rgba(26, 9, 9, 0.12) 0%, transparent 40%);
+    animation: mistDrift 30s infinite linear;
     pointer-events: none;
     z-index: 1;
 }
 
-@keyframes fogMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(50%); }
+@keyframes mistDrift {
+    0% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(25%) scale(1.1); }
+    100% { transform: translateX(50%) scale(1); }
 }
 
 .orbs-container {
@@ -142,41 +164,53 @@ body.medieval-realm::before {
 
 .orb {
     position: absolute;
-    width: 60px;
-    height: 60px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, var(--gold-light), var(--gold-royal));
+    background: radial-gradient(circle at 30% 30%, var(--ember-orange), var(--ember-red));
     box-shadow: 
-        0 0 20px var(--gold-royal),
-        0 0 40px rgba(212, 175, 55, 0.5),
-        inset 0 0 20px rgba(255, 255, 255, 0.2);
-    animation: orbFloat 12s infinite ease-in-out;
-    opacity: 0.8;
+        0 0 8px var(--ember-red),
+        0 0 16px rgba(204, 68, 0, 0.3),
+        inset 0 0 4px rgba(255, 255, 255, 0.1);
+    animation: soulFloat 20s infinite ease-in-out;
+    opacity: 0.6;
 }
 
 .orb-1 {
-    top: 20%;
-    left: 10%;
+    top: 25%;
+    left: 15%;
     animation-delay: 0s;
 }
 
 .orb-2 {
-    top: 60%;
-    right: 15%;
-    animation-delay: -4s;
+    top: 70%;
+    right: 20%;
+    animation-delay: -7s;
 }
 
 .orb-3 {
-    top: 80%;
-    left: 50%;
-    animation-delay: -8s;
+    top: 85%;
+    left: 60%;
+    animation-delay: -14s;
 }
 
-@keyframes orbFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-30px) rotate(90deg); }
-    50% { transform: translateY(-10px) rotate(180deg); }
-    75% { transform: translateY(-40px) rotate(270deg); }
+@keyframes soulFloat {
+    0%, 100% { 
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.6;
+    }
+    25% { 
+        transform: translateY(-40px) translateX(20px) scale(1.2);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translateY(-20px) translateX(-15px) scale(0.8);
+        opacity: 0.4;
+    }
+    75% { 
+        transform: translateY(-60px) translateX(30px) scale(1.1);
+        opacity: 0.7;
+    }
 }
 
 .dragons {
@@ -191,39 +225,48 @@ body.medieval-realm::before {
 
 .dragon {
     position: absolute;
-    font-size: 3rem;
-    animation: dragonFly 15s infinite linear;
-    opacity: 0.6;
-    text-shadow: 0 0 20px var(--orange-fire);
+    font-size: 2rem;
+    animation: shadowFly 25s infinite linear;
+    opacity: 0.3;
+    text-shadow: 0 0 15px var(--shadow-deep);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
 }
 
 .dragon-1 {
-    top: 15%;
+    top: 10%;
     animation-delay: 0s;
 }
 
 .dragon-2 {
-    top: 70%;
-    animation-delay: -7s;
+    top: 80%;
+    animation-delay: -12s;
 }
 
-@keyframes dragonFly {
+@keyframes shadowFly {
     0% {
-        left: -10%;
-        transform: translateY(0);
+        left: -15%;
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
     }
     25% {
-        transform: translateY(-50px);
+        transform: translateY(-30px) scale(1);
     }
     50% {
-        transform: translateY(20px);
+        transform: translateY(10px) scale(0.9);
     }
     75% {
-        transform: translateY(-30px);
+        transform: translateY(-20px) scale(1.1);
+    }
+    90% {
+        opacity: 0.3;
     }
     100% {
-        left: 110%;
-        transform: translateY(0);
+        left: 115%;
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
     }
 }
 
@@ -239,36 +282,37 @@ body.medieval-realm::before {
 
 .firefly {
     position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--gold-light);
+    width: 1px;
+    height: 1px;
+    background: var(--bone-white);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--gold-light);
-    animation: fireflyDance 8s infinite ease-in-out;
+    box-shadow: 0 0 4px var(--bone-white), 0 0 8px rgba(244, 241, 232, 0.5);
+    animation: ghostlyFloat 12s infinite ease-in-out;
+    opacity: 0.7;
 }
 
-.firefly:nth-child(1) { top: 20%; left: 25%; animation-delay: 0s; }
-.firefly:nth-child(2) { top: 40%; left: 75%; animation-delay: -2s; }
-.firefly:nth-child(3) { top: 60%; left: 15%; animation-delay: -4s; }
-.firefly:nth-child(4) { top: 80%; left: 85%; animation-delay: -6s; }
-.firefly:nth-child(5) { top: 30%; left: 50%; animation-delay: -1s; }
+.firefly:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; }
+.firefly:nth-child(2) { top: 45%; left: 80%; animation-delay: -3s; }
+.firefly:nth-child(3) { top: 70%; left: 10%; animation-delay: -6s; }
+.firefly:nth-child(4) { top: 90%; left: 90%; animation-delay: -9s; }
+.firefly:nth-child(5) { top: 25%; left: 55%; animation-delay: -1.5s; }
 
-@keyframes fireflyDance {
+@keyframes ghostlyFloat {
     0%, 100% {
-        transform: translate(0, 0);
-        opacity: 0.8;
+        transform: translate(0, 0) scale(1);
+        opacity: 0.7;
     }
     25% {
-        transform: translate(20px, -30px);
+        transform: translate(15px, -25px) scale(1.5);
         opacity: 1;
     }
     50% {
-        transform: translate(-15px, -10px);
-        opacity: 0.6;
+        transform: translate(-10px, -5px) scale(0.8);
+        opacity: 0.4;
     }
     75% {
-        transform: translate(30px, -40px);
-        opacity: 1;
+        transform: translate(20px, -35px) scale(1.2);
+        opacity: 0.9;
     }
 }
 
@@ -278,14 +322,18 @@ body.medieval-realm::before {
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(180deg, 
-        rgba(26, 15, 10, 0.95) 0%, 
-        rgba(26, 15, 10, 0.8) 100%);
-    backdrop-filter: blur(10px);
-    border-bottom: 3px solid var(--gold-royal);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    background: 
+        linear-gradient(180deg, 
+            rgba(13, 13, 13, 0.98) 0%, 
+            rgba(26, 9, 9, 0.95) 50%,
+            rgba(13, 13, 13, 0.90) 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--blood-crimson);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.8),
+        inset 0 -1px 0 rgba(102, 0, 0, 0.3);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
 }
 
 .castle-nav {
@@ -299,67 +347,76 @@ body.medieval-realm::before {
 
 .heraldry {
     font-family: var(--font-medieval);
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--gold-royal);
+    color: var(--bone-aged);
     text-shadow: 
-        0 0 10px var(--gold-royal),
-        2px 2px 4px rgba(0, 0, 0, 0.8);
+        0 0 8px var(--ember-red),
+        2px 2px 4px var(--shadow-deep),
+        0 0 15px rgba(102, 0, 0, 0.5);
     letter-spacing: 2px;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.9));
 }
 
 .nav-banners {
     display: flex;
     list-style: none;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 .nav-banner {
     position: relative;
     display: block;
-    padding: 0.8rem 1.5rem;
-    color: var(--parchment);
+    padding: 0.7rem 1.2rem;
+    color: var(--bone-aged);
     text-decoration: none;
     font-family: var(--font-medieval);
     font-weight: 600;
-    font-size: 1rem;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    background: linear-gradient(145deg, 
-        rgba(44, 24, 16, 0.8) 0%, 
-        rgba(61, 36, 24, 0.6) 100%);
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: 
+        linear-gradient(145deg, 
+            rgba(45, 45, 45, 0.6) 0%, 
+            rgba(26, 9, 9, 0.8) 100%);
     transition: all 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .nav-banner:hover {
-    color: var(--gold-light);
-    border-color: var(--gold-royal);
-    background: linear-gradient(145deg, 
-        rgba(212, 175, 55, 0.2) 0%, 
-        rgba(44, 24, 16, 0.8) 100%);
+    color: var(--bone-white);
+    border-color: var(--blood-crimson);
+    background: 
+        linear-gradient(145deg, 
+            rgba(102, 0, 0, 0.3) 0%, 
+            rgba(26, 9, 9, 0.9) 100%);
     box-shadow: 
-        0 0 20px rgba(212, 175, 55, 0.3),
-        inset 0 0 10px rgba(212, 175, 55, 0.1);
-    transform: translateY(-2px);
+        0 0 12px rgba(102, 0, 0, 0.4),
+        inset 0 0 8px rgba(102, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+    text-shadow: 
+        0 0 5px var(--ember-red),
+        1px 1px 3px var(--shadow-deep);
 }
 
 .nav-banner::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--gold-royal), var(--gold-light), var(--gold-royal));
-    border-radius: 10px;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--blood-crimson), var(--ember-red), var(--blood-crimson));
+    border-radius: 5px;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .nav-banner:hover::before {
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 /* ===== SECTION FORTERESSE (HERO) ===== */
@@ -370,7 +427,10 @@ body.medieval-realm::before {
     justify-content: center;
     position: relative;
     padding: 2rem;
-    margin-top: 80px;
+    margin-top: 70px;
+    background: 
+        radial-gradient(ellipse at 50% 100%, rgba(26, 9, 9, 0.6) 0%, transparent 70%),
+        linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .castle-gate {
@@ -378,183 +438,226 @@ body.medieval-realm::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    cursor: pointer;
+    cursor: crosshair;
     z-index: 10;
-    opacity: 0.3;
-    transition: opacity 0.3s ease;
+    opacity: 0.15;
+    transition: opacity 0.5s ease;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
 
 .castle-gate:hover {
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .gate-doors {
     display: flex;
-    font-size: 4rem;
-    gap: 0.5rem;
+    font-size: 3rem;
+    gap: 0.2rem;
+    filter: sepia(100%) saturate(0%) brightness(0.3);
 }
 
 .gate-left, .gate-right {
-    transition: transform 0.8s ease;
+    transition: transform 1.2s ease;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
 .gate-doors.opening .gate-left {
-    transform: rotateY(-90deg);
+    transform: rotateY(-120deg) scale(0.8);
 }
 
 .gate-doors.opening .gate-right {
-    transform: rotateY(90deg);
+    transform: rotateY(120deg) scale(0.8);
 }
 
 .torches {
     position: absolute;
-    top: 20%;
+    top: 15%;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 0 8%;
     pointer-events: none;
 }
 
 .torch {
     position: relative;
-    width: 20px;
-    height: 60px;
-    background: linear-gradient(180deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
-    border-radius: 4px;
+    width: 12px;
+    height: 50px;
+    background: 
+        linear-gradient(180deg, 
+            var(--decay-brown) 0%, 
+            var(--iron-black) 70%, 
+            var(--shadow-deep) 100%);
+    border-radius: 2px;
+    box-shadow: 
+        inset 0 0 4px rgba(0, 0, 0, 0.8),
+        0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 .flame {
     position: absolute;
-    top: -30px;
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
-    width: 30px;
-    height: 40px;
-    background: radial-gradient(ellipse at bottom, var(--orange-fire) 0%, var(--red-blood) 100%);
+    width: 18px;
+    height: 30px;
+    background: 
+        radial-gradient(ellipse at bottom, 
+            var(--ember-orange) 0%, 
+            var(--ember-red) 60%, 
+            var(--shadow-deep) 100%);
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    animation: flameFlicker 0.5s infinite alternate;
+    animation: flameFlicker 0.8s infinite alternate;
+    box-shadow: 
+        0 0 8px var(--ember-red),
+        0 0 15px rgba(204, 68, 0, 0.4);
 }
 
 @keyframes flameFlicker {
     0% {
-        transform: translateX(-50%) scale(1) rotate(-2deg);
-        filter: brightness(1);
+        transform: translateX(-50%) scale(0.9) rotate(-1deg);
+        filter: brightness(0.9);
+        opacity: 0.8;
     }
     100% {
-        transform: translateX(-50%) scale(1.1) rotate(2deg);
+        transform: translateX(-50%) scale(1.1) rotate(1deg);
         filter: brightness(1.2);
+        opacity: 1;
     }
 }
 
 .hero-content {
     text-align: center;
-    max-width: 800px;
+    max-width: 900px;
     z-index: 5;
     position: relative;
 }
 
 .lord-title {
     font-family: var(--font-medieval);
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    color: var(--gold-royal);
+    color: var(--bone-white);
     text-shadow: 
-        0 0 20px var(--gold-royal),
-        4px 4px 8px rgba(0, 0, 0, 0.8);
+        0 0 15px var(--ember-red),
+        3px 3px 8px var(--shadow-deep),
+        0 0 30px rgba(102, 0, 0, 0.6);
     margin-bottom: 1rem;
     letter-spacing: 3px;
-    animation: titleGlow 3s infinite alternate;
+    animation: titleGlow 4s infinite alternate;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
 }
 
 @keyframes titleGlow {
     0% {
         text-shadow: 
-            0 0 20px var(--gold-royal),
-            4px 4px 8px rgba(0, 0, 0, 0.8);
+            0 0 15px var(--ember-red),
+            3px 3px 8px var(--shadow-deep),
+            0 0 30px rgba(102, 0, 0, 0.6);
     }
     100% {
         text-shadow: 
-            0 0 30px var(--gold-light),
-            0 0 40px var(--gold-royal),
-            4px 4px 8px rgba(0, 0, 0, 0.8);
+            0 0 20px var(--ember-orange),
+            0 0 35px var(--ember-red),
+            3px 3px 8px var(--shadow-deep),
+            0 0 50px rgba(204, 68, 0, 0.4);
     }
 }
 
 .lord-subtitle {
     font-family: var(--font-medieval);
-    font-size: 2rem;
-    color: var(--parchment);
+    font-size: 1.8rem;
+    color: var(--bone-aged);
     margin-bottom: 2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 
+        2px 2px 6px var(--shadow-deep),
+        0 0 8px rgba(0, 0, 0, 0.8);
     letter-spacing: 1px;
+    opacity: 0.9;
 }
 
 .medieval-scroll {
     background: 
-        linear-gradient(135deg, var(--parchment-dark) 0%, var(--parchment) 100%);
-    color: var(--brown-dark);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 3px solid var(--gold-royal);
+        linear-gradient(135deg, 
+            rgba(42, 31, 26, 0.95) 0%, 
+            rgba(26, 9, 9, 0.90) 50%,
+            rgba(13, 13, 13, 0.95) 100%);
+    color: var(--bone-aged);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 2px solid var(--blood-crimson);
     box-shadow: 
-        0 0 30px rgba(212, 175, 55, 0.3),
-        inset 0 0 20px rgba(0, 0, 0, 0.1);
+        0 0 25px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(102, 0, 0, 0.3);
     margin: 2rem 0;
     position: relative;
+    backdrop-filter: blur(2px);
 }
 
 .medieval-scroll::before {
     content: '📜';
     position: absolute;
-    top: -15px;
+    top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2rem;
-    background: var(--parchment);
-    padding: 0 1rem;
+    font-size: 1.5rem;
+    background: var(--decay-brown);
+    padding: 0 0.8rem;
+    border-radius: 50%;
+    border: 1px solid var(--blood-crimson);
+    filter: sepia(80%) saturate(60%) brightness(0.7);
 }
 
 .proclamation {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-weight: 400;
     text-align: justify;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .royal-motto {
     font-family: var(--font-medieval);
-    font-size: 1.8rem;
-    color: var(--gold-royal);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 1.6rem;
+    color: var(--bone-white);
+    text-shadow: 
+        0 0 8px var(--ember-red),
+        2px 2px 4px var(--shadow-deep);
     font-style: italic;
     margin: 2rem 0;
     letter-spacing: 1px;
+    opacity: 0.95;
 }
 
 .medieval-buttons {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     justify-content: center;
     margin-top: 3rem;
 }
 
 .medieval-btn {
     padding: 1rem 2rem;
-    border: 3px solid var(--gold-royal);
-    background: linear-gradient(145deg, 
-        rgba(26, 15, 10, 0.9) 0%, 
-        rgba(44, 24, 16, 0.9) 100%);
-    color: var(--gold-light);
+    border: 2px solid var(--blood-crimson);
+    background: 
+        linear-gradient(145deg, 
+            rgba(13, 13, 13, 0.95) 0%, 
+            rgba(26, 9, 9, 0.90) 50%,
+            rgba(13, 13, 13, 0.95) 100%);
+    color: var(--bone-aged);
     font-family: var(--font-medieval);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+    cursor: crosshair;
+    transition: all 0.4s ease;
+    text-shadow: 1px 1px 3px var(--shadow-deep);
     position: relative;
     overflow: hidden;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .medieval-btn::before {
@@ -564,11 +667,12 @@ body.medieval-realm::before {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(212, 175, 55, 0.2) 50%, 
-        transparent 100%);
-    transition: left 0.5s ease;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, 
+            rgba(102, 0, 0, 0.3) 50%, 
+            transparent 100%);
+    transition: left 0.6s ease;
 }
 
 .medieval-btn:hover::before {
@@ -576,23 +680,31 @@ body.medieval-realm::before {
 }
 
 .medieval-btn:hover {
-    background: linear-gradient(145deg, 
-        rgba(212, 175, 55, 0.2) 0%, 
-        rgba(26, 15, 10, 0.9) 100%);
+    background: 
+        linear-gradient(145deg, 
+            rgba(102, 0, 0, 0.4) 0%, 
+            rgba(26, 9, 9, 0.95) 50%,
+            rgba(13, 13, 13, 0.95) 100%);
     box-shadow: 
-        0 0 20px rgba(212, 175, 55, 0.5),
-        inset 0 0 10px rgba(212, 175, 55, 0.1);
-    transform: translateY(-3px);
+        0 0 20px rgba(102, 0, 0, 0.6),
+        inset 0 0 10px rgba(102, 0, 0, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
+    color: var(--bone-white);
+    text-shadow: 
+        0 0 8px var(--ember-red),
+        1px 1px 3px var(--shadow-deep);
 }
 
 .btn-primary {
-    border-color: var(--orange-fire);
+    border-color: var(--ember-orange);
 }
 
 .btn-primary:hover {
     box-shadow: 
-        0 0 20px rgba(255, 107, 53, 0.5),
-        inset 0 0 10px rgba(255, 107, 53, 0.1);
+        0 0 20px rgba(204, 68, 0, 0.6),
+        inset 0 0 10px rgba(204, 68, 0, 0.2),
+        0 4px 15px rgba(0, 0, 0, 0.8);
 }
 
 /* ===== SECTIONS GÉNÉRALES ===== */
@@ -605,29 +717,35 @@ section {
 
 .medieval-title {
     font-family: var(--font-medieval);
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
-    color: var(--gold-royal);
+    color: var(--bone-white);
     text-shadow: 
-        0 0 20px var(--gold-royal),
-        3px 3px 6px rgba(0, 0, 0, 0.8);
+        0 0 15px var(--ember-red),
+        3px 3px 8px var(--shadow-deep),
+        0 0 25px rgba(102, 0, 0, 0.5);
     margin-bottom: 3rem;
     letter-spacing: 2px;
     position: relative;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
 }
 
 .medieval-title::after {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--gold-royal) 50%, 
-        transparent 100%);
+    width: 150px;
+    height: 2px;
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%, 
+            var(--blood-crimson) 20%,
+            var(--ember-red) 50%, 
+            var(--blood-crimson) 80%,
+            transparent 100%);
+    box-shadow: 0 0 8px rgba(102, 0, 0, 0.6);
 }
 
 /* ===== SECTION CHRONIQUES ===== */
@@ -745,16 +863,35 @@ section {
 
 .weapon-card {
     position: relative;
-    background: linear-gradient(145deg, 
-        rgba(26, 15, 10, 0.9) 0%, 
-        rgba(44, 24, 16, 0.9) 100%);
-    border: 3px solid var(--gold-royal);
-    border-radius: 15px;
+    background: 
+        linear-gradient(145deg, 
+            rgba(13, 13, 13, 0.95) 0%, 
+            rgba(26, 9, 9, 0.90) 30%,
+            rgba(45, 45, 45, 0.85) 70%,
+            rgba(13, 13, 13, 0.95) 100%);
+    border: 2px solid var(--iron-grey);
+    border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    cursor: crosshair;
+    transition: all 0.4s ease;
     overflow: hidden;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.weapon-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><filter id="rust"><feTurbulence baseFrequency="0.9" numOctaves="3"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="100" height="100" fill="%23000000" opacity="0.05"/><circle cx="20" cy="30" r="1" fill="%23660000" opacity="0.2"/><circle cx="80" cy="70" r="0.5" fill="%23330000" opacity="0.3"/></svg>');
+    pointer-events: none;
+    border-radius: 6px;
 }
 
 .weapon-card::before {
@@ -764,85 +901,133 @@ section {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, var(--gold-royal), var(--gold-light), var(--gold-royal));
-    border-radius: 17px;
+    background: linear-gradient(45deg, var(--blood-crimson), var(--ember-red), var(--blood-crimson));
+    border-radius: 10px;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
 }
 
 .weapon-card:hover::before {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 .weapon-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-8px) scale(1.01);
     box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(212, 175, 55, 0.3);
+        0 15px 35px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(102, 0, 0, 0.4),
+        inset 0 0 15px rgba(102, 0, 0, 0.1);
+    border-color: var(--blood-crimson);
 }
 
 .weapon-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
     display: block;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8));
 }
 
 .fire-weapon .weapon-icon {
-    animation: fireGlow 2s infinite alternate;
+    animation: fireGlow 3s infinite alternate;
 }
 
 @keyframes fireGlow {
-    0% { text-shadow: 0 0 20px var(--orange-fire); }
-    100% { text-shadow: 0 0 30px var(--orange-fire), 0 0 40px var(--red-blood); }
+    0% { 
+        text-shadow: 
+            0 0 15px var(--ember-orange),
+            0 0 25px rgba(204, 68, 0, 0.4);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) brightness(0.9);
+    }
+    100% { 
+        text-shadow: 
+            0 0 20px var(--ember-red),
+            0 0 35px rgba(153, 0, 0, 0.6);
+        filter: drop-shadow(0 0 12px rgba(204, 68, 0, 0.6)) brightness(1.1);
+    }
 }
 
 .ice-weapon .weapon-icon {
-    animation: iceGlow 2s infinite alternate;
+    animation: iceGlow 3s infinite alternate;
 }
 
 @keyframes iceGlow {
-    0% { text-shadow: 0 0 20px var(--blue-ice); }
-    100% { text-shadow: 0 0 30px var(--blue-ice), 0 0 40px #87CEEB; }
+    0% { 
+        text-shadow: 
+            0 0 15px var(--ice-blue),
+            0 0 25px rgba(30, 42, 74, 0.4);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) brightness(0.9);
+    }
+    100% { 
+        text-shadow: 
+            0 0 20px #4a90e2,
+            0 0 35px rgba(74, 144, 226, 0.5);
+        filter: drop-shadow(0 0 12px rgba(30, 42, 74, 0.6)) brightness(1.1);
+    }
 }
 
 .lightning-weapon .weapon-icon {
-    animation: lightningGlow 2s infinite alternate;
+    animation: lightningGlow 2.5s infinite alternate;
 }
 
 @keyframes lightningGlow {
-    0% { text-shadow: 0 0 20px #FFD700; }
-    100% { text-shadow: 0 0 30px #FFD700, 0 0 40px #FFFF00; }
+    0% { 
+        text-shadow: 
+            0 0 15px #ffd700,
+            0 0 25px rgba(255, 215, 0, 0.4);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) brightness(0.9);
+    }
+    100% { 
+        text-shadow: 
+            0 0 25px #ffff00,
+            0 0 40px rgba(255, 255, 0, 0.6);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7)) brightness(1.2);
+    }
 }
 
 .earth-weapon .weapon-icon {
-    animation: earthGlow 2s infinite alternate;
+    animation: earthGlow 3.5s infinite alternate;
 }
 
 @keyframes earthGlow {
-    0% { text-shadow: 0 0 20px var(--green-earth); }
-    100% { text-shadow: 0 0 30px var(--green-earth), 0 0 40px #4CAF50; }
+    0% { 
+        text-shadow: 
+            0 0 15px var(--poison-green),
+            0 0 25px rgba(45, 74, 45, 0.4);
+        filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.8)) brightness(0.9);
+    }
+    100% { 
+        text-shadow: 
+            0 0 20px #4caf50,
+            0 0 35px rgba(76, 175, 80, 0.5);
+        filter: drop-shadow(0 0 12px rgba(45, 74, 45, 0.6)) brightness(1.1);
+    }
 }
 
 .weapon-name {
     font-family: var(--font-medieval);
-    font-size: 1.5rem;
-    color: var(--gold-royal);
+    font-size: 1.4rem;
+    color: var(--bone-white);
     margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    text-shadow: 
+        0 0 8px var(--ember-red),
+        2px 2px 4px var(--shadow-deep);
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
 }
 
 .weapon-description {
-    color: var(--parchment);
-    font-size: 1.1rem;
+    color: var(--bone-aged);
+    font-size: 1rem;
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px var(--shadow-deep);
 }
 
 .weapon-stats {
-    color: var(--parchment-dark);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    color: var(--ash-grey);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px var(--shadow-deep);
 }
 
 .rarity-glow {
@@ -896,12 +1081,21 @@ section {
 .quest-scroll {
     position: relative;
     background: 
-        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
-    border: 3px solid var(--gold-royal);
-    border-radius: 15px;
+        linear-gradient(180deg, 
+            rgba(8, 8, 8, 0.95) 0%,
+            rgba(20, 8, 8, 0.90) 20%,
+            rgba(15, 15, 15, 0.95) 80%,
+            rgba(5, 5, 5, 0.98) 100%);
+    border: 2px solid var(--iron-grey);
+    border-radius: 8px;
     padding: 2rem;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    transition: all 0.4s ease;
+    cursor: crosshair;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(102, 0, 0, 0.1);
 }
 
 .quest-scroll::before {
@@ -912,31 +1106,53 @@ section {
     right: 0;
     bottom: 0;
     background: 
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="scroll" patternUnits="userSpaceOnUse" width="15" height="15"><circle cx="7.5" cy="7.5" r="0.5" fill="%23c7aa7d" opacity="0.2"/></pattern></defs><rect width="100" height="100" fill="url(%23scroll)"/></svg>');
-    border-radius: 12px;
+        radial-gradient(circle at 20% 30%, rgba(102, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(51, 0, 0, 0.08) 0%, transparent 50%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><filter id="roughpaper"><feTurbulence baseFrequency="0.04" numOctaves="4"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="200" height="200" fill="%23000000" opacity="0.03" filter="url(%23roughpaper)"/></svg>');
+    border-radius: 6px;
     pointer-events: none;
 }
 
+.quest-scroll::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--ember-red), var(--blood-crimson), var(--ember-red));
+    border-radius: 9px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.quest-scroll:hover::after {
+    opacity: 0.2;
+}
+
 .legendary-quest {
-    border-color: var(--gold-royal);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    border-color: var(--ember-red);
+    box-shadow: 0 0 20px rgba(204, 68, 0, 0.4);
 }
 
 .epic-quest {
-    border-color: var(--purple-mystic);
-    box-shadow: 0 0 20px rgba(74, 20, 140, 0.3);
+    border-color: var(--poison-green);
+    box-shadow: 0 0 20px rgba(45, 74, 45, 0.4);
 }
 
 .rare-quest {
-    border-color: var(--blue-ice);
-    box-shadow: 0 0 20px rgba(30, 58, 138, 0.3);
+    border-color: var(--ice-blue);
+    box-shadow: 0 0 20px rgba(30, 42, 74, 0.4);
 }
 
 .quest-scroll:hover {
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(-5px) scale(1.01);
     box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(212, 175, 55, 0.4);
+        0 12px 30px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(102, 0, 0, 0.3),
+        inset 0 0 10px rgba(102, 0, 0, 0.1);
+    border-color: var(--ember-red);
 }
 
 .quest-seal {
@@ -944,124 +1160,209 @@ section {
     top: -15px;
     right: 20px;
     font-size: 2rem;
-    background: var(--parchment);
+    background: 
+        radial-gradient(circle, 
+            rgba(8, 8, 8, 0.95) 0%,
+            rgba(26, 9, 9, 0.90) 100%);
     padding: 0.5rem;
     border-radius: 50%;
-    border: 2px solid var(--gold-royal);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    border: 2px solid var(--ember-red);
+    box-shadow: 
+        0 0 15px rgba(204, 68, 0, 0.5),
+        0 4px 12px rgba(0, 0, 0, 0.8);
 }
 
 .quest-title {
     font-family: var(--font-medieval);
     font-size: 1.5rem;
-    color: var(--brown-dark);
+    color: var(--bone-white);
     margin-bottom: 0.5rem;
-    text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.3);
+    text-shadow: 
+        0 0 8px var(--ember-red),
+        2px 2px 4px var(--shadow-deep);
+    position: relative;
+    z-index: 1;
 }
 
 .quest-rank {
-    color: var(--gold-royal);
+    color: var(--ember-red);
     font-weight: 700;
     font-size: 0.9rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-shadow: 1px 1px 2px var(--shadow-deep);
+    position: relative;
+    z-index: 1;
 }
 
 .quest-description {
-    color: var(--brown-dark);
+    color: var(--bone-aged);
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px var(--shadow-deep);
+    position: relative;
+    z-index: 1;
 }
 
 .quest-rewards {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .tech-rune {
-    background: linear-gradient(145deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
-    color: var(--gold-light);
+    background: 
+        linear-gradient(145deg, 
+            rgba(102, 0, 0, 0.8) 0%, 
+            rgba(51, 0, 0, 0.9) 100%);
+    color: var(--bone-aged);
     padding: 0.3rem 0.8rem;
-    border-radius: 15px;
+    border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 600;
-    border: 1px solid var(--gold-royal);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--iron-grey);
+    text-shadow: 1px 1px 2px var(--shadow-deep);
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.tech-rune:hover {
+    background: 
+        linear-gradient(145deg, 
+            rgba(102, 0, 0, 0.9) 0%, 
+            rgba(153, 0, 0, 0.8) 100%);
+    color: var(--bone-white);
+    transform: translateY(-1px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.7),
+        0 0 8px rgba(102, 0, 0, 0.3);
 }
 
 /* ===== SECTION GRIMOIRE ===== */
 .grimoire-section {
-    background: radial-gradient(ellipse at center, 
-        rgba(26, 15, 10, 0.3) 0%, 
-        transparent 70%);
+    background: 
+        radial-gradient(ellipse at center, 
+            rgba(8, 8, 8, 0.4) 0%, 
+            transparent 70%),
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(13, 4, 4, 0.6) 50%,
+            rgba(0, 0, 0, 0.9) 100%);
 }
 
 .spellbook {
     max-width: 800px;
     margin: 0 auto;
     background: 
-        linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
-    border: 4px solid var(--gold-royal);
-    border-radius: 20px;
+        linear-gradient(145deg, 
+            rgba(5, 5, 5, 0.98) 0%, 
+            rgba(20, 6, 6, 0.95) 30%,
+            rgba(13, 13, 13, 0.98) 70%,
+            rgba(0, 0, 0, 0.99) 100%);
+    border: 3px solid var(--iron-grey);
+    border-radius: 10px;
     padding: 3rem;
     box-shadow: 
-        0 0 40px rgba(212, 175, 55, 0.3),
-        inset 0 0 30px rgba(0, 0, 0, 0.3);
+        0 0 50px rgba(0, 0, 0, 0.9),
+        0 0 25px rgba(102, 0, 0, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
     position: relative;
+    overflow: hidden;
+}
+
+.spellbook::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(102, 0, 0, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(51, 0, 0, 0.08) 0%, transparent 40%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><filter id="ancientpaper"><feTurbulence baseFrequency="0.02" numOctaves="4"/><feColorMatrix type="saturate" values="0"/></filter></defs><rect width="300" height="300" fill="%23000000" opacity="0.02" filter="url(%23ancientpaper)"/></svg>');
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 .book-cover {
     text-align: center;
     padding: 2rem;
-    border-bottom: 2px solid var(--gold-royal);
+    border-bottom: 2px solid var(--ember-red);
     cursor: pointer;
     margin-bottom: 2rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
 }
 
 .book-cover:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: scale(1.02);
+    background: 
+        linear-gradient(135deg, 
+            rgba(102, 0, 0, 0.1) 0%, 
+            rgba(204, 68, 0, 0.05) 100%);
+    transform: scale(1.01);
+    box-shadow: 
+        0 0 20px rgba(102, 0, 0, 0.2),
+        inset 0 0 15px rgba(102, 0, 0, 0.1);
 }
 
 .book-title {
     font-family: var(--font-medieval);
     font-size: 2.5rem;
-    color: var(--gold-royal);
+    color: var(--bone-white);
     text-shadow: 
-        0 0 20px var(--gold-royal),
-        3px 3px 6px rgba(0, 0, 0, 0.8);
+        0 0 20px var(--ember-red),
+        0 0 35px rgba(204, 68, 0, 0.4),
+        3px 3px 6px var(--shadow-deep);
     margin-bottom: 0.5rem;
     letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
 }
 
 .book-subtitle {
     font-family: var(--font-text);
     font-size: 1.2rem;
-    color: var(--parchment);
+    color: var(--bone-aged);
     font-style: italic;
+    text-shadow: 2px 2px 4px var(--shadow-deep);
+    position: relative;
+    z-index: 1;
 }
 
 .spell-pages {
     position: relative;
     min-height: 400px;
     background: 
-        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
-    border-radius: 15px;
+        linear-gradient(145deg, 
+            rgba(8, 8, 8, 0.95) 0%, 
+            rgba(20, 8, 8, 0.90) 30%,
+            rgba(15, 15, 15, 0.95) 70%,
+            rgba(5, 5, 5, 0.98) 100%);
+    border-radius: 8px;
     padding: 2rem;
     margin-bottom: 2rem;
+    border: 1px solid var(--iron-grey);
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.8),
+        inset 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .spell-page {
     display: none;
-    color: var(--brown-dark);
+    color: var(--bone-aged);
+    text-shadow: 1px 1px 2px var(--shadow-deep);
 }
 
 .spell-page.active {
     display: block;
-    animation: pageFlip 0.5s ease-in-out;
+    animation: pageFlip 0.6s ease-in-out;
 }
 
 @keyframes pageFlip {
@@ -1167,9 +1468,14 @@ section {
 
 /* ===== SECTION CORBEAUX ===== */
 .ravens-section {
-    background: radial-gradient(ellipse at center, 
-        rgba(139, 0, 0, 0.1) 0%, 
-        transparent 70%);
+    background: 
+        radial-gradient(ellipse at center, 
+            rgba(8, 8, 8, 0.4) 0%, 
+            transparent 70%),
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(13, 4, 4, 0.7) 50%,
+            rgba(0, 0, 0, 0.95) 100%);
 }
 
 .raven-tower {
@@ -1184,17 +1490,22 @@ section {
 
 .raven-messenger {
     font-size: 4rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    cursor: crosshair;
+    transition: all 0.4s ease;
     display: inline-block;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    text-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.9),
+        0 0 15px var(--ember-red);
+    filter: drop-shadow(0 0 10px rgba(102, 0, 0, 0.6));
 }
 
 .raven-messenger:hover {
-    transform: scale(1.2) rotate(10deg);
+    transform: scale(1.15) rotate(8deg);
     text-shadow: 
-        0 0 30px var(--gold-royal),
-        0 0 40px rgba(212, 175, 55, 0.5);
+        0 0 40px var(--ember-red),
+        0 0 60px rgba(204, 68, 0, 0.5),
+        0 0 20px rgba(0, 0, 0, 0.9);
+    filter: drop-shadow(0 0 20px rgba(102, 0, 0, 0.8));
 }
 
 .message-scrolls {
@@ -1207,29 +1518,65 @@ section {
 .business-scroll,
 .projects-scroll {
     background: 
-        linear-gradient(135deg, var(--parchment) 0%, var(--parchment-dark) 100%);
-    border: 3px solid var(--gold-royal);
-    border-radius: 15px;
+        linear-gradient(145deg, 
+            rgba(8, 8, 8, 0.95) 0%, 
+            rgba(20, 8, 8, 0.90) 30%,
+            rgba(15, 15, 15, 0.95) 70%,
+            rgba(5, 5, 5, 0.98) 100%);
+    border: 2px solid var(--iron-grey);
+    border-radius: 8px;
     padding: 2rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 6px 20px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(102, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-scroll::before,
+.business-scroll::before,
+.projects-scroll::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(45deg, var(--ember-red), var(--blood-crimson), var(--ember-red));
+    border-radius: 9px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .contact-scroll:hover,
 .business-scroll:hover,
 .projects-scroll:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.01);
     box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(212, 175, 55, 0.3);
+        0 12px 30px rgba(0, 0, 0, 0.9),
+        0 0 20px rgba(102, 0, 0, 0.3);
+    border-color: var(--ember-red);
+}
+
+.contact-scroll:hover::before,
+.business-scroll:hover::before,
+.projects-scroll:hover::before {
+    opacity: 0.2;
 }
 
 .scroll-title {
     font-family: var(--font-medieval);
     font-size: 1.5rem;
-    color: var(--brown-dark);
-    text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.3);
+    color: var(--bone-white);
+    text-shadow: 
+        0 0 8px var(--ember-red),
+        2px 2px 4px var(--shadow-deep);
     margin-bottom: 1.5rem;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .contact-methods,
@@ -1246,19 +1593,35 @@ section {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: rgba(26, 15, 10, 0.1);
-    border: 2px solid var(--gold-royal);
-    border-radius: 10px;
+    background: 
+        linear-gradient(135deg, 
+            rgba(102, 0, 0, 0.2) 0%,
+            rgba(51, 0, 0, 0.3) 100%);
+    border: 1px solid var(--iron-grey);
+    border-radius: 6px;
     text-decoration: none;
-    color: var(--brown-dark);
+    color: var(--bone-aged);
     transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px var(--shadow-deep);
+    position: relative;
+    z-index: 1;
+    box-shadow: 
+        0 3px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .contact-method:hover,
 .project-link:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: translateX(10px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    background: 
+        linear-gradient(135deg, 
+            rgba(102, 0, 0, 0.4) 0%,
+            rgba(153, 0, 0, 0.3) 100%);
+    color: var(--bone-white);
+    transform: translateX(8px) translateY(-2px);
+    box-shadow: 
+        0 6px 15px rgba(0, 0, 0, 0.7),
+        0 0 15px rgba(102, 0, 0, 0.3);
+    border-color: var(--ember-red);
 }
 
 .contact-icon,
@@ -1272,15 +1635,33 @@ section {
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: rgba(26, 15, 10, 0.1);
-    border: 2px solid var(--gold-royal);
-    border-radius: 10px;
+    background: 
+        linear-gradient(135deg, 
+            rgba(102, 0, 0, 0.2) 0%,
+            rgba(51, 0, 0, 0.3) 100%);
+    border: 1px solid var(--iron-grey);
+    border-radius: 6px;
     transition: all 0.3s ease;
+    color: var(--bone-aged);
+    text-shadow: 1px 1px 2px var(--shadow-deep);
+    position: relative;
+    z-index: 1;
+    box-shadow: 
+        0 3px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .service-item:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: scale(1.02);
+    background: 
+        linear-gradient(135deg, 
+            rgba(102, 0, 0, 0.4) 0%,
+            rgba(153, 0, 0, 0.3) 100%);
+    color: var(--bone-white);
+    transform: scale(1.02) translateY(-2px);
+    box-shadow: 
+        0 6px 15px rgba(0, 0, 0, 0.7),
+        0 0 12px rgba(102, 0, 0, 0.3);
+    border-color: var(--ember-red);
 }
 
 /* ===== ÉLÉMENTS INTERACTIFS ===== */
