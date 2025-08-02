@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2025
 ** kinder [WSL: Ubuntu-22.04]
 ** File description:
-** index - Dark Medieval Fantasy Portfolio
+** Dark Castle Portfolio - Sven Reichert
 -->
 
 <!DOCTYPE html>
@@ -10,742 +10,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sire Sven Reichert - Château des Arts Numérique 🏰</title>
+    <title>Sven Reichert - Maître des Arts Obscurs du Code</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Uncial+Antiqua&display=swap" rel="stylesheet">
 </head>
-<body class="medieval-realm">
-    <!-- Effets atmosphériques dark fantasy supprimés -->
+<body class="dark-realm">
+    <!-- Navigation des Ombres -->
+    <nav class="shadow-navigation">
+        <div class="nav-seal">
+            <div class="heraldic-mark">SR</div>
+        </div>
+        <ul class="shadow-links">
+            <li><a href="#entrance" class="shadow-link" data-scroll="entrance">L'Entrée</a></li>
+            <li><a href="#depths" class="shadow-link" data-scroll="depths">Les Profondeurs</a></li>
+            <li><a href="#sanctum" class="shadow-link" data-scroll="sanctum">Le Sanctuaire</a></li>
+            <li><a href="#archives" class="shadow-link" data-scroll="archives">Les Archives</a></li>
+            <li><a href="#contact" class="shadow-link" data-scroll="contact">Invocation</a></li>
+        </ul>
+    </nav>
 
-    <!-- Navigation Médiévale -->
-    <header class="medieval-header">
-        <nav class="castle-nav">
-            <div class="heraldry">RS</div>
-            <ul class="nav-banners">
-                <li><a href="#fortress" class="nav-banner">Forteresse</a></li>
-                <li><a href="#chronicles" class="nav-banner">Chroniques</a></li>
-                <li><a href="#arsenal" class="nav-banner">Arsenal</a></li>
-                <li><a href="#quests" class="nav-banner">Quêtes</a></li>
-                <li><a href="#grimoire" class="nav-banner">Grimoire</a></li>
-                <li><a href="#ravens" class="nav-banner">Corbeaux</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Section Forteresse (Hero) -->
-    <section id="fortress" class="fortress-section">
-        <div class="castle-gate" onclick="openGate()">
-            <div class="gate-doors">
-                <div class="gate-left"></div>
-                <div class="gate-right"></div>
+    <!-- Section 1: L'Entrée du Château -->
+    <section id="entrance" class="castle-section entrance-hall">
+        <div class="section-overlay"></div>
+        <div class="torch-light torch-left"></div>
+        <div class="torch-light torch-right"></div>
+        
+        <div class="entrance-content">
+            <div class="ancient-scroll">
+                <h1 class="dark-title">Sven Reichert</h1>
+                <div class="title-runes">Maître des Arts Obscurs du Code</div>
+                <div class="entrance-text">
+                    <p>Dans les tréfonds de cette forteresse numérique, où les algorithmes murmurent leurs secrets anciens, 
+                    réside un artisan du code dont les créations transcendent la réalité ordinaire.</p>
+                    
+                    <p>Forgeron d'applications, tisseur de solutions, architecte de l'impossible - 
+                    tel est celui qui maîtrise les langages oubliés de la programmation.</p>
+                </div>
+                <div class="entrance-actions">
+                    <button class="dark-button primary" onclick="descendIntoDepths()">
+                        Descendre dans les Profondeurs
+                    </button>
+                </div>
             </div>
         </div>
         
-        <div class="torches">
-            <div class="torch torch-left">
-                <div class="flame"></div>
-            </div>
-            <div class="torch torch-right">
-                <div class="flame"></div>
-            </div>
-        </div>
-
-        <div class="hero-content">
-            <h1 class="lord-title">Sire Sven Reichert</h1>
-            <h2 class="lord-subtitle">Maître des Arts Numériques</h2>
-            <div class="medieval-scroll">
-                <p class="proclamation">
-                    En cette ère de révolution technologique, moi, Sven Reichert, 
-                    forge des solutions digitales dans les forges d'Epitech Nice.
-                    <br><br>
-                    Entrepreneur aguerri • Développeur de renom • Maître de quatre langues
-                </p>
-            </div>
-            <div class="royal-motto">« Par le Code et l'Innovation, je règne »</div>
-            <div class="medieval-buttons">
-                <button class="medieval-btn btn-primary" onclick="showMagicPortal(() => document.getElementById('quests').scrollIntoView())">
-                    Voir mes Quêtes
-                </button>
-                <button class="medieval-btn btn-secondary" onclick="summonRaven()">
-                    Me Contacter
-                </button>
-            </div>
-        </div>
+        <div class="mystical-particles"></div>
     </section>
 
-    <!-- Section Chroniques (À propos) -->
-    <section id="chronicles" class="chronicles-section">
-        <h2 class="section-title medieval-title">Les Chroniques du Royaume</h2>
-        <div class="parchment">
-            <div class="parchment-content">
-                <div class="illuminated-letter">S</div>
-                <p class="chronicle-text">
-                    ire Sven, maître des arcanes numériques, bâtit son empire technologique 
-                    depuis les terres mystiques d'Epitech. Polyglotte et visionnaire, 
-                    il manie les langages de programmation comme un sorcier ses sorts, 
-                    créant des merveilles digitales qui transcendent les frontières.
-                </p>
-                <div class="languages-banner">
-                    <div class="language-crest">
-                        <div class="flag fr"></div>
-                        <span class="lang-name">Français</span>
-                    </div>
-                    <div class="language-crest">
-                        <div class="flag en"></div>
-                        <span class="lang-name">English</span>
-                    </div>
-                    <div class="language-crest">
-                        <div class="flag de"></div>
-                        <span class="lang-name">Deutsch</span>
-                    </div>
-                    <div class="language-crest">
-                        <div class="flag pl"></div>
-                        <span class="lang-name">Polski</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Arsenal (Compétences) -->
-    <section id="arsenal" class="arsenal-section">
-        <h2 class="section-title medieval-title">L'Arsenal Mystique</h2>
-        <div class="weapons-display">
-            <div class="weapon-card fire-weapon" data-element="fire">
-                <div class="weapon-icon"></div>
-                <h3 class="weapon-name">Épée de Feu</h3>
-                <p class="weapon-description">Développement</p>
-                <div class="weapon-stats">C • C++ • Python • JavaScript • React</div>
-                <div class="rarity-glow legendary"></div>
-            </div>
-            
-            <div class="weapon-card ice-weapon" data-element="ice">
-                <div class="weapon-icon"></div>
-                <h3 class="weapon-name">Lame de Glace</h3>
-                <p class="weapon-description">DevOps & Systèmes</p>
-                <div class="weapon-stats">Linux • Git • Docker • AWS</div>
-                <div class="rarity-glow epic"></div>
-            </div>
-            
-            <div class="weapon-card lightning-weapon" data-element="lightning">
-                <div class="weapon-icon"></div>
-                <h3 class="weapon-name">Sceptre de Foudre</h3>
-                <p class="weapon-description">Intelligence Artificielle</p>
-                <div class="weapon-stats">Machine Learning • Deep Learning • NLP</div>
-                <div class="rarity-glow legendary"></div>
-            </div>
-            
-            <div class="weapon-card earth-weapon" data-element="earth">
-                <div class="weapon-icon"></div>
-                <h3 class="weapon-name">Bouclier de Terre</h3>
-                <p class="weapon-description">Entrepreneuriat</p>
-                <div class="weapon-stats">Business Strategy • Leadership • Innovation</div>
-                <div class="rarity-glow rare"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Quêtes (Projets) -->
-    <section id="quests" class="quests-section">
-        <h2 class="section-title medieval-title">Registre des Quêtes</h2>
-        <div class="quest-scrolls">
-            <div class="quest-scroll legendary-quest">
-                <div class="quest-seal"></div>
-                <div class="quest-content">
-                    <h3 class="quest-title">La Quête d'AmaCompare</h3>
-                    <p class="quest-rank">Quête Légendaire</p>
-                    <div class="quest-description">
-                        <p>Une quête épique pour créer le comparateur de prix Amazon le plus puissant d'Europe. 
-                        Utilisant des magies anciennes de web scraping et d'analyse de données.</p>
-                        <div class="quest-rewards">
-                            <span class="tech-rune">Python</span>
-                            <span class="tech-rune">Web Scraping</span>
-                            <span class="tech-rune">API</span>
-                            <span class="tech-rune">Database</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quest-scroll epic-quest">
-                <div class="quest-seal"></div>
-                <div class="quest-content">
-                    <h3 class="quest-title">Les Mystères d'Epitech</h3>
-                    <p class="quest-rank">Quête Épique</p>
-                    <div class="quest-description">
-                        <p>Parcours initiatique dans les arcanes de la programmation. 
-                        Maîtrise des arts du C, C++ et des algorithmes complexes.</p>
-                        <div class="quest-rewards">
-                            <span class="tech-rune">C/C++</span>
-                            <span class="tech-rune">Algorithms</span>
-                            <span class="tech-rune">Data Structures</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quest-scroll rare-quest">
-                <div class="quest-seal"></div>
-                <div class="quest-content">
-                    <h3 class="quest-title">L'Empire Freelance</h3>
-                    <p class="quest-rank">Quête Rare</p>
-                    <div class="quest-description">
-                        <p>Construction d'un réseau de clients et développement de solutions sur mesure. 
-                        L'art de l'entrepreneuriat numérique.</p>
-                        <div class="quest-rewards">
-                            <span class="tech-rune">Business</span>
-                            <span class="tech-rune">Client Relations</span>
-                            <span class="tech-rune">Custom Solutions</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Grimoire (Présentation) -->
-    <section id="grimoire" class="grimoire-section">
-        <h2 class="section-title medieval-title">Le Grimoire des Sorts</h2>
-        <div class="spellbook">
-            <div class="book-cover" onclick="createMagicBurst()">
-                <div class="book-title">Codex Magicus</div>
-                <div class="book-subtitle">Sven Reichert</div>
-            </div>
-            
-            <div class="spell-pages">
-                <div class="spell-page active" id="spell-1">
-                    <h3 class="spell-name">Invocation du Code</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Par les anciens mystères du silicium et les runes du binaire, 
-                            je transforme les idées en réalité numérique."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">Créativité</div>
-                            <div class="component">Innovation</div>
-                            <div class="component">Expérimentation</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="spell-page" id="spell-2">
-                    <h3 class="spell-name">Gel des Bugs</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Par la patience du debugging et la sagesse de l'expérience, 
-                            je purifie le code de toute corruption."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">Analyse</div>
-                            <div class="component">Debug</div>
-                            <div class="component">Optimisation</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="spell-page" id="spell-3">
-                    <h3 class="spell-name">Éclair d'Inspiration</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Quand l'innovation frappe, les solutions émergent comme 
-                            des éclairs dans la nuit de la complexité."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">Vision</div>
-                            <div class="component">Exécution</div>
-                            <div class="component">Précision</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="spell-page" id="spell-4">
-                    <h3 class="spell-name">Connexion Universelle</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Par les liens invisibles du réseau mondial, 
-                            je connecte les âmes numériques aux solutions parfaites."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">Réseau</div>
-                            <div class="component">Collaboration</div>
-                            <div class="component">Impact</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="spell-navigation">
-                <button class="spell-nav-btn" onclick="previousSpell()">‹ Précédent</button>
-                <div class="spell-dots">
-                    <span class="spell-dot active" onclick="currentSpell(1)"></span>
-                    <span class="spell-dot" onclick="currentSpell(2)"></span>
-                    <span class="spell-dot" onclick="currentSpell(3)"></span>
-                    <span class="spell-dot" onclick="currentSpell(4)"></span>
-                </div>
-                <button class="spell-nav-btn" onclick="nextSpell()">Suivant ›</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Tour des Corbeaux (Contact) -->
-    <section id="ravens" class="ravens-section">
-        <h2 class="section-title medieval-title">La Tour des Corbeaux</h2>
-        <div class="raven-tower">
-            <div class="tower-top">
-                <div class="raven-messenger" onclick="summonRaven()"></div>
-            </div>
-            <div class="message-scrolls">
-                <div class="contact-scroll">
-                    <h3 class="scroll-title">Messages Royaux</h3>
-                    <div class="contact-methods">
-                        <a href="mailto:sven.reichert@epitech.eu" class="contact-method">
-                            <span class="contact-icon"></span>
-                            <span class="contact-text">sven.reichert@epitech.eu</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sven-reichert-rs" class="contact-method" target="_blank">
-                            <span class="contact-icon"></span>
-                            <span class="contact-text">LinkedIn Royal</span>
-                        </a>
-                        <a href="https://github.com/MrKiwistiti" class="contact-method" target="_blank">
-                            <span class="contact-icon"></span>
-                            <span class="contact-text">Arsenal GitHub</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="business-scroll">
-                    <h3 class="scroll-title">Affaires du Royaume</h3>
-                    <div class="business-services">
-                        <div class="service-item">
-                            <span class="service-icon"></span>
-                            <span class="service-name">Développement Web</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-icon"></span>
-                            <span class="service-name">Solutions IA</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-icon"></span>
-                            <span class="service-name">Applications Mobiles</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-icon"></span>
-                            <span class="service-name">Conseil Tech</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="projects-scroll">
-                    <h3 class="scroll-title">Quêtes Spécialisées</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/MrKiwistiti/AmacompareV2" class="project-link" target="_blank">
-                            <span class="project-icon"></span>
-                            <span class="project-name">AmaCompare</span>
-                        </a>
-                        <a href="https://guns.lol/mrkiwi" class="project-link" target="_blank">
-                            <span class="project-icon"></span>
-                            <span class="project-name">Cash Trader CS2</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dialogue Box pour les interactions -->
-    <div id="dialogueBox" class="dialogue-box hidden">
-        <div class="dialogue-content">
-            <div class="dialogue-character"></div>
-            <div class="dialogue-text"></div>
-        </div>
-        <div class="dialogue-options"></div>
-    </div>
-
-    <!-- Boss Battle Arena (Hidden) -->
-    <div id="bossArena" class="boss-arena hidden">
-        <div class="boss-container">
-            <div class="boss-dragon"></div>
-            <div class="boss-health-bar">
-                <div class="boss-health-fill"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Achievement Notifications -->
-    <div id="achievementNotification" class="achievement-notification hidden">
-        <div class="achievement-icon"></div>
-        <div class="achievement-content">
-            <div class="achievement-title"></div>
-            <div class="achievement-description"></div>
-        </div>
-    </div>
-
-    <!-- Portail magique pour les transitions -->
-    <div id="magicPortal" class="magic-portal hidden">
-        <div class="portal-ring"></div>
-        <div class="portal-energy"></div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Section 2: Les Profondeurs - Compétences -->
+    <section id="depths" class="castle-section chamber-depths">
+        <div class="section-overlay"></div>
+        <div class="torch-light torch-center"></div>
         
-        <div class="torches">
-            <div class="torch torch-left">
-                <div class="flame"></div>
-            </div>
-            <div class="torch torch-right">
-                <div class="flame"></div>
-            </div>
-        </div>
-
-        <div class="hero-content">
-            <h1 class="lord-title">Sire Sven Reichert</h1>
-            <h2 class="lord-subtitle">Maître des Arts Numériques</h2>
-            <div class="medieval-scroll">
-                <p class="proclamation">
-                    En cette ère de révolution technologique, moi, Sven Reichert, 
-                    forge des solutions digitales dans les forges d'Epitech Nice.
-                    <br><br>
-                    Entrepreneur aguerri • Développeur de renom • Maître de quatre langues
-                </p>
-            </div>
-            <div class="royal-motto">« Par le Code et l'Innovation, je règne »</div>
-            <div class="medieval-buttons">
-                <button class="medieval-btn btn-primary" onclick="showMagicPortal(() => document.getElementById('quests').scrollIntoView())">
-                    ⚔️ Voir mes Quêtes
-                </button>
-                <button class="medieval-btn btn-secondary" onclick="summonRaven()">
-                    🐦‍⬛ Envoyer un Corbeau
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Chroniques (À propos) -->
-    <section id="chronicles" class="chronicles-section">
-        <h2 class="section-title medieval-title">📜 Les Chroniques du Royaume</h2>
-        <div class="parchment">
-            <div class="parchment-content">
-                <div class="illuminated-letter">S</div>
-                <p class="chronicle-text">
-                    ire Sven, maître des arcanes numériques, bâtit son empire technologique 
-                    depuis les terres mystiques d'Epitech. Polyglotte et visionnaire, 
-                    il manie les langages de programmation comme un sorcier ses sorts, 
-                    créant des merveilles digitales qui transcendent les frontières.
-                </p>
-                <div class="languages-banner">
-                    <div class="language-crest">
-                        <div class="flag fr"></div>
-                        <span class="lang-name">Français</span>
-                    </div>
-                    <div class="language-crest">
-                        <div class="flag en"></div>
-                        <span class="lang-name">English</span>
-                    </div>
-                    <div class="language-crest">
-                        <div class="flag de"></div>
-                        <span class="lang-name">Deutsch</span>
-                    </div>
-                    <div class="language-crest">
-                        <div class="flag pl"></div>
-                        <span class="lang-name">Polski</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Arsenal (Compétences) -->
-    <section id="arsenal" class="arsenal-section">
-        <h2 class="section-title medieval-title">⚔️ L'Arsenal Mystique</h2>
-        <div class="weapons-display">
-            <div class="weapon-card fire-weapon" data-element="fire">
-                <div class="weapon-icon">🔥</div>
-                <h3 class="weapon-name">Épée de Feu</h3>
-                <p class="weapon-description">Développement</p>
-                <div class="weapon-stats">C • C++ • Python • JavaScript • React</div>
-                <div class="rarity-glow legendary"></div>
+        <div class="depths-content">
+            <div class="chamber-title">
+                <h2 class="section-heading">Les Profondeurs Mystiques</h2>
+                <div class="heading-runes">Arsenaux des Connaissances Anciennes</div>
             </div>
             
-            <div class="weapon-card ice-weapon" data-element="ice">
-                <div class="weapon-icon">❄️</div>
-                <h3 class="weapon-name">Lame de Glace</h3>
-                <p class="weapon-description">DevOps & Systèmes</p>
-                <div class="weapon-stats">Linux • Git • Docker • AWS</div>
-                <div class="rarity-glow epic"></div>
-            </div>
-            
-            <div class="weapon-card lightning-weapon" data-element="lightning">
-                <div class="weapon-icon">⚡</div>
-                <h3 class="weapon-name">Sceptre de Foudre</h3>
-                <p class="weapon-description">Intelligence Artificielle</p>
-                <div class="weapon-stats">Machine Learning • Deep Learning • NLP</div>
-                <div class="rarity-glow legendary"></div>
-            </div>
-            
-            <div class="weapon-card earth-weapon" data-element="earth">
-                <div class="weapon-icon">🌍</div>
-                <h3 class="weapon-name">Bouclier de Terre</h3>
-                <p class="weapon-description">Entrepreneuriat</p>
-                <div class="weapon-stats">Business Strategy • Leadership • Innovation</div>
-                <div class="rarity-glow rare"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Quêtes (Projets) -->
-    <section id="quests" class="quests-section">
-        <h2 class="section-title medieval-title">🗡️ Registre des Quêtes</h2>
-        <div class="quest-scrolls">
-            <div class="quest-scroll legendary-quest">
-                <div class="quest-seal">🏆</div>
-                <div class="quest-content">
-                    <h3 class="quest-title">La Quête d'AmaCompare</h3>
-                    <p class="quest-rank">Quête Légendaire</p>
-                    <div class="quest-description">
-                        <p>Une quête épique pour créer le comparateur de prix Amazon le plus puissant d'Europe. 
-                        Utilisant des magies anciennes de web scraping et d'analyse de données.</p>
-                        <div class="quest-rewards">
-                            <span class="tech-rune">Python</span>
-                            <span class="tech-rune">Web Scraping</span>
-                            <span class="tech-rune">API</span>
-                            <span class="tech-rune">Database</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quest-scroll epic-quest">
-                <div class="quest-seal">🔮</div>
-                <div class="quest-content">
-                    <h3 class="quest-title">Les Mystères d'Epitech</h3>
-                    <p class="quest-rank">Quête Épique</p>
-                    <div class="quest-description">
-                        <p>Parcours initiatique dans les arcanes de la programmation. 
-                        Maîtrise des arts du C, C++ et des algorithmes complexes.</p>
-                        <div class="quest-rewards">
-                            <span class="tech-rune">C/C++</span>
-                            <span class="tech-rune">Algorithms</span>
-                            <span class="tech-rune">Data Structures</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quest-scroll rare-quest">
-                <div class="quest-seal">🌟</div>
-                <div class="quest-content">
-                    <h3 class="quest-title">L'Empire Freelance</h3>
-                    <p class="quest-rank">Quête Rare</p>
-                    <div class="quest-description">
-                        <p>Construction d'un réseau de clients et développement de solutions sur mesure. 
-                        L'art de l'entrepreneuriat numérique.</p>
-                        <div class="quest-rewards">
-                            <span class="tech-rune">Business</span>
-                            <span class="tech-rune">Client Relations</span>
-                            <span class="tech-rune">Custom Solutions</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Grimoire (Présentation) -->
-    <section id="grimoire" class="grimoire-section">
-        <h2 class="section-title medieval-title">📖 Le Grimoire des Sorts</h2>
-        <div class="spellbook">
-            <div class="book-cover" onclick="createMagicBurst()">
-                <div class="book-title">Codex Magicus</div>
-                <div class="book-subtitle">Sven Reichert</div>
-            </div>
-            
-            <div class="spell-pages">
-                <div class="spell-page active" id="spell-1">
-                    <h3 class="spell-name">🔥 Invocation du Code</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Par les anciens mystères du silicium et les runes du binaire, 
-                            je transforme les idées en réalité numérique."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">💎 Créativité</div>
-                            <div class="component">⚡ Innovation</div>
-                            <div class="component">🧪 Expérimentation</div>
+            <div class="knowledge-chambers">
+                <div class="knowledge-crystal fire-crystal">
+                    <div class="crystal-core"></div>
+                    <div class="crystal-content">
+                        <h3 class="crystal-name">Cristal de Feu</h3>
+                        <div class="crystal-domain">Arts de la Création</div>
+                        <div class="crystal-powers">
+                            <span class="power-rune">Python</span>
+                            <span class="power-rune">JavaScript</span>
+                            <span class="power-rune">React</span>
+                            <span class="power-rune">C/C++</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="spell-page" id="spell-2">
-                    <h3 class="spell-name">❄️ Gel des Bugs</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Par la patience du debugging et la sagesse de l'expérience, 
-                            je purifie le code de toute corruption."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">🔍 Analyse</div>
-                            <div class="component">🛠️ Debug</div>
-                            <div class="component">✨ Optimisation</div>
+                <div class="knowledge-crystal shadow-crystal">
+                    <div class="crystal-core"></div>
+                    <div class="crystal-content">
+                        <h3 class="crystal-name">Cristal d'Ombre</h3>
+                        <div class="crystal-domain">Systèmes Occultes</div>
+                        <div class="crystal-powers">
+                            <span class="power-rune">Linux</span>
+                            <span class="power-rune">Docker</span>
+                            <span class="power-rune">AWS</span>
+                            <span class="power-rune">Git</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="spell-page" id="spell-3">
-                    <h3 class="spell-name">⚡ Éclair d'Inspiration</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Quand l'innovation frappe, les solutions émergent comme 
-                            des éclairs dans la nuit de la complexité."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">💡 Vision</div>
-                            <div class="component">🚀 Exécution</div>
-                            <div class="component">🎯 Précision</div>
+                <div class="knowledge-crystal void-crystal">
+                    <div class="crystal-core"></div>
+                    <div class="crystal-content">
+                        <h3 class="crystal-name">Cristal du Vide</h3>
+                        <div class="crystal-domain">Intelligence Artificielle</div>
+                        <div class="crystal-powers">
+                            <span class="power-rune">Machine Learning</span>
+                            <span class="power-rune">Deep Learning</span>
+                            <span class="power-rune">NLP</span>
+                            <span class="power-rune">Data Science</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="spell-page" id="spell-4">
-                    <h3 class="spell-name">🌍 Connexion Universelle</h3>
-                    <div class="spell-content">
-                        <p class="spell-description">
-                            "Par les liens invisibles du réseau mondial, 
-                            je connecte les âmes numériques aux solutions parfaites."
-                        </p>
-                        <div class="spell-components">
-                            <div class="component">🌐 Réseau</div>
-                            <div class="component">🤝 Collaboration</div>
-                            <div class="component">🌟 Impact</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="spell-navigation">
-                <button class="spell-nav-btn" onclick="previousSpell()">‹ Précédent</button>
-                <div class="spell-dots">
-                    <span class="spell-dot active" onclick="currentSpell(1)"></span>
-                    <span class="spell-dot" onclick="currentSpell(2)"></span>
-                    <span class="spell-dot" onclick="currentSpell(3)"></span>
-                    <span class="spell-dot" onclick="currentSpell(4)"></span>
-                </div>
-                <button class="spell-nav-btn" onclick="nextSpell()">Suivant ›</button>
             </div>
         </div>
     </section>
 
-    <!-- Section Tour des Corbeaux (Contact) -->
-    <section id="ravens" class="ravens-section">
-        <h2 class="section-title medieval-title">🐦‍⬛ La Tour des Corbeaux</h2>
-        <div class="raven-tower">
-            <div class="tower-top">
-                <div class="raven-messenger" onclick="summonRaven()">🐦‍⬛</div>
+    <!-- Section 3: Le Sanctuaire - Projets -->
+    <section id="sanctum" class="castle-section inner-sanctum">
+        <div class="section-overlay"></div>
+        <div class="torch-light torch-altar"></div>
+        
+        <div class="sanctum-content">
+            <div class="altar-title">
+                <h2 class="section-heading">Le Sanctuaire des Créations</h2>
+                <div class="heading-runes">Où les Visions Prennent Forme</div>
             </div>
-            <div class="message-scrolls">
-                <div class="contact-scroll">
-                    <h3 class="scroll-title">📧 Messages Royaux</h3>
+            
+            <div class="creation-altars">
+                <div class="altar-stone legendary-altar">
+                    <div class="altar-flame"></div>
+                    <div class="altar-content">
+                        <h3 class="creation-name">AmaCompare</h3>
+                        <div class="creation-rank">Création Légendaire</div>
+                        <div class="creation-description">
+                            Un oracle numérique capable de scruter les profondeurs d'Amazon pour révéler 
+                            les secrets des prix cachés. Cette création transcende les limites du commerce 
+                            traditionnel, offrant aux mortels un regard privilégié sur l'économie des ombres.
+                        </div>
+                        <div class="creation-essence">
+                            <span class="essence-rune">Web Scraping</span>
+                            <span class="essence-rune">Data Analysis</span>
+                            <span class="essence-rune">API Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="altar-stone epic-altar">
+                    <div class="altar-flame"></div>
+                    <div class="altar-content">
+                        <h3 class="creation-name">L'Ascension Epitech</h3>
+                        <div class="creation-rank">Quête Épique</div>
+                        <div class="creation-description">
+                            Un périple initiatique à travers les arcanes de la programmation moderne. 
+                            Chaque projet forgé dans les feux de la connaissance, chaque algorithme 
+                            maîtrisé comme un sort ancien gravé dans la mémoire éternelle.
+                        </div>
+                        <div class="creation-essence">
+                            <span class="essence-rune">Algorithm Mastery</span>
+                            <span class="essence-rune">System Architecture</span>
+                            <span class="essence-rune">Code Craftsmanship</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Les Archives - À propos -->
+    <section id="archives" class="castle-section ancient-archives">
+        <div class="section-overlay"></div>
+        <div class="torch-light torch-archives"></div>
+        
+        <div class="archives-content">
+            <div class="manuscript-title">
+                <h2 class="section-heading">Les Archives Ancestrales</h2>
+                <div class="heading-runes">Chroniques d'un Maître des Arts Obscurs</div>
+            </div>
+            
+            <div class="ancient-manuscript">
+                <div class="manuscript-initial">S</div>
+                <div class="manuscript-text">
+                    <p>ven Reichert, né des mystères d'Epitech Nice, a consacré son existence à percer 
+                    les secrets les plus profonds de l'art numérique. Dans les halls silencieux de 
+                    cette académie légendaire, il a appris à dompter les forces primitives du code.</p>
+                    
+                    <p>Polyglotte des langages anciens et modernes, il maîtrise non seulement les 
+                    dialectes du silicium mais aussi ceux des mortels - français dans sa pureté 
+                    native, anglais dans sa précision commerciale, allemand dans sa rigueur 
+                    technique, et polonais dans sa poésie slave.</p>
+                    
+                    <p>Entrepreneur dans l'âme, il forge des solutions là où d'autres ne voient 
+                    que chaos, transformant les défis les plus complexes en œuvres d'art 
+                    fonctionnelles qui défient les lois ordinaires de la logique.</p>
+                </div>
+                
+                <div class="language-seals">
+                    <div class="seal-rune fr-seal">FR</div>
+                    <div class="seal-rune en-seal">EN</div>
+                    <div class="seal-rune de-seal">DE</div>
+                    <div class="seal-rune pl-seal">PL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Contact - Invocation -->
+    <section id="contact" class="castle-section summoning-chamber">
+        <div class="section-overlay"></div>
+        <div class="torch-light torch-summoning"></div>
+        
+        <div class="summoning-content">
+            <div class="summoning-title">
+                <h2 class="section-heading">Chambre d'Invocation</h2>
+                <div class="heading-runes">Où les Âmes Se Rencontrent</div>
+            </div>
+            
+            <div class="summoning-circle">
+                <div class="inner-circle">
                     <div class="contact-methods">
-                        <a href="mailto:sven.reichert@epitech.eu" class="contact-method">
-                            <span class="contact-icon">✉️</span>
-                            <span class="contact-text">sven.reichert@epitech.eu</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sven-reichert-rs" class="contact-method" target="_blank">
-                            <span class="contact-icon">💼</span>
-                            <span class="contact-text">LinkedIn Royal</span>
-                        </a>
-                        <a href="https://github.com/MrKiwistiti" class="contact-method" target="_blank">
-                            <span class="contact-icon">⚔️</span>
-                            <span class="contact-text">Arsenal GitHub</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="business-scroll">
-                    <h3 class="scroll-title">💰 Affaires du Royaume</h3>
-                    <div class="business-services">
-                        <div class="service-item">
-                            <span class="service-icon">🏗️</span>
-                            <span class="service-name">Développement Web</span>
+                        <div class="contact-portal email-portal">
+                            <div class="portal-rune"></div>
+                            <div class="portal-text">
+                                <div class="portal-label">Missive Électronique</div>
+                                <a href="mailto:sven.reichert@epitech.eu" class="portal-link">
+                                    sven.reichert@epitech.eu
+                                </a>
+                            </div>
                         </div>
-                        <div class="service-item">
-                            <span class="service-icon">🤖</span>
-                            <span class="service-name">Solutions IA</span>
+                        
+                        <div class="contact-portal linkedin-portal">
+                            <div class="portal-rune"></div>
+                            <div class="portal-text">
+                                <div class="portal-label">Réseau Professionnel</div>
+                                <a href="https://www.linkedin.com/in/sven-reichert-rs" target="_blank" class="portal-link">
+                                    Profil LinkedIn
+                                </a>
+                            </div>
                         </div>
-                        <div class="service-item">
-                            <span class="service-icon">📱</span>
-                            <span class="service-name">Applications Mobiles</span>
-                        </div>
-                        <div class="service-item">
-                            <span class="service-icon">💡</span>
-                            <span class="service-name">Conseil Tech</span>
+                        
+                        <div class="contact-portal github-portal">
+                            <div class="portal-rune"></div>
+                            <div class="portal-text">
+                                <div class="portal-label">Arsenal de Code</div>
+                                <a href="https://github.com/MrKiwistiti" target="_blank" class="portal-link">
+                                    Dépôt GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="projects-scroll">
-                    <h3 class="scroll-title">🎯 Quêtes Spécialisées</h3>
-                    <div class="project-links">
-                        <a href="https://github.com/MrKiwistiti/AmacompareV2" class="project-link" target="_blank">
-                            <span class="project-icon">🏆</span>
-                            <span class="project-name">AmaCompare</span>
-                        </a>
-                        <a href="https://guns.lol/mrkiwi" class="project-link" target="_blank">
-                            <span class="project-icon">💼</span>
-                            <span class="project-name">Cash Trader CS2</span>
-                        </a>
-                    </div>
+                <div class="summoning-runes">
+                    <div class="rune-circle"></div>
+                    <div class="rune-circle"></div>
+                    <div class="rune-circle"></div>
+                    <div class="rune-circle"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Dialogue Box pour les interactions -->
-    <div id="dialogueBox" class="dialogue-box hidden">
-        <div class="dialogue-content">
-            <div class="dialogue-character">🧙‍♂️</div>
-            <div class="dialogue-text"></div>
-        </div>
-        <div class="dialogue-options"></div>
+    <!-- Transition Overlay -->
+    <div class="transition-overlay hidden">
+        <div class="transition-flame"></div>
     </div>
 
-    <!-- Status Bars -->
-    <div class="status-bars">
-        <div class="status-bar">
-            <div class="status-label">⚡ Mana</div>
-            <div class="status-fill mana-bar"></div>
-        </div>
-        <div class="status-bar">
-            <div class="status-label">❤️ Vie</div>
-            <div class="status-fill health-bar"></div>
-        </div>
-    </div>
-
-    <!-- Boss Battle Arena (Hidden) -->
-    <div id="bossArena" class="boss-arena hidden">
-        <div class="boss-container">
-            <div class="boss-dragon">🐲</div>
-            <div class="boss-health-bar">
-                <div class="boss-health-fill"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Achievement Notifications -->
-    <div id="achievementNotification" class="achievement-notification hidden">
-        <div class="achievement-icon"></div>
-        <div class="achievement-content">
-            <div class="achievement-title"></div>
-            <div class="achievement-description"></div>
-        </div>
-    </div>
-
-    <!-- Portail magique pour les transitions -->
-    <div id="magicPortal" class="magic-portal hidden">
-        <div class="portal-ring"></div>
-        <div class="portal-energy"></div>
-    </div>
+    <!-- Ambient Effects -->
+    <div class="ambient-shadows"></div>
+    <div class="mystical-mist"></div>
 
     <script src="script.js"></script>
 </body>
